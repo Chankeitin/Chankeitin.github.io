@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2722538 */
-  src: url('iconfont.woff2?t=1628080775900') format('woff2'),
-       url('iconfont.woff?t=1628080775900') format('woff'),
-       url('iconfont.ttf?t=1628080775900') format('truetype');
+  src: url('//at.alicdn.com/t/font_2722538_moyhufzrql.woff2?t=1628144455404') format('woff2'),
+       url('//at.alicdn.com/t/font_2722538_moyhufzrql.woff?t=1628144455404') format('woff'),
+       url('//at.alicdn.com/t/font_2722538_moyhufzrql.ttf?t=1628144455404') format('truetype');
 }
 
 .iconfont {
@@ -13,11 +13,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-mianxingniuyouguo:before {
-  content: "\e623";
+.icon-git:before {
+  content: "\e600";
 }
 
-.icon-gitee2:before {
-  content: "\e677";
+.icon-home:before {
+  content: "\e711";
+}
+
+.icon-gitee:before {
+  content: "\e602";
+}
+
+.icon-mianxingniuyouguo:before {
+  content: "\e623";
 }
 
