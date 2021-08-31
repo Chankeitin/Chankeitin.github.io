@@ -4,6 +4,70 @@
   
     
     <entry>
+      <title>vue跨域代理配置 与 浏览器跨域配置</title>
+      <link href="/2021/09/05/vue%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E4%B8%8E%20%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE/"/>
+      <url>/2021/09/05/vue%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E4%B8%8E%20%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="vue跨域代理配置与-浏览器跨域配置"><a href="#vue跨域代理配置与-浏览器跨域配置" class="headerlink" title="vue跨域代理配置与 浏览器跨域配置"></a>vue跨域代理配置与 浏览器跨域配置</h1><h2 id="浏览器报错信息如下"><a href="#浏览器报错信息如下" class="headerlink" title="浏览器报错信息如下"></a>浏览器报错信息如下</h2><p><img src="https://i.loli.net/2021/08/31/mxnHs8G9TrkPdNA.png" alt="跨域报错信息"></p><h2 id="方法一（适用于开发）"><a href="#方法一（适用于开发）" class="headerlink" title="方法一（适用于开发）"></a>方法一（适用于开发）</h2><p>vue.config.js 增加 <strong>disableHostCheck: true</strong></p><blockquote><p>disableHostCheck: true</p></blockquote><p>谷歌为例</p><p>创建快捷方式-&gt;右键属性-&gt;在 <strong>目标</strong>位置后面加上  </p><blockquote><p>–disable-web-security –user-data-dir=D:\MyChromeDevUserData </p></blockquote><p>user-data-dir 中 MyChromeDevUserData 是自己创建的文件夹</p><p><img src="https://i.loli.net/2021/08/31/y8KxTSJn6CeqIOv.png" alt="chrome跨域配置"></p><h2 id="方法2（推荐"><a href="#方法2（推荐" class="headerlink" title="方法2（推荐)"></a>方法2（推荐)</h2><p>在vue.config.js中配置代理</p><p>pathRewrite —- 在项目中找到<code>/api</code>(前)开头的URL，并替换为<code>/api</code>(后）</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">port</span>: <span class="number">8200</span>, <span class="comment">// 此处修改你想要的端口号</span></span><br><span class="line">        <span class="attr">proxy</span>: &#123;  <span class="comment">//配置跨域</span></span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">              <span class="attr">target</span>: <span class="string">&#x27;http://xx.xx.xx.xxx:8100/&#x27;</span>,</span><br><span class="line">              <span class="attr">changOrigin</span>: <span class="literal">true</span>,  <span class="comment">//允许跨域</span></span><br><span class="line">              <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">                <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&#x27;/api&#x27;</span> </span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在配置统一的url js文件中，把<strong>baseURL改成地址前缀（关键）</strong></p><p>重点：<strong>baseURL: “/“</strong></p><p>若把baseURL写成改成vue的启动地址，则在<strong>window的nginix上没问题</strong>。但部署在Linux服务器上会出现找不到axios请求后台地址失败</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> request = axios.create(&#123;</span><br><span class="line">  <span class="comment">// 根据不同的环境设置baseURL，最终发送请求时的URL为: baseURL + 发送请求时写的URL</span></span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">  <span class="attr">withCredentials</span>: <span class="literal">true</span>, <span class="comment">// 允许携带cookie</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">20000</span> <span class="comment">// 请求超时, 20秒</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+          <category> 前端 </category>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> chrome </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>经过NGINX反向代理，后端服务器获取不了真实IP</title>
+      <link href="/2021/09/01/%E7%BB%8F%E8%BF%87NGINX%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8E%B7%E5%8F%96%E4%B8%8D%E4%BA%86%E7%9C%9F%E5%AE%9EIP/"/>
+      <url>/2021/09/01/%E7%BB%8F%E8%BF%87NGINX%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8E%B7%E5%8F%96%E4%B8%8D%E4%BA%86%E7%9C%9F%E5%AE%9EIP/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="经过NGINX反向代理，后端服务器获取不了真实IP"><a href="#经过NGINX反向代理，后端服务器获取不了真实IP" class="headerlink" title="经过NGINX反向代理，后端服务器获取不了真实IP"></a>经过NGINX反向代理，后端服务器获取不了真实IP</h1><p><strong>原因：</strong>通过了Apache，Squid，nginx等反向代理软件就不能获取到客户端的真实IP地址了。经过代理以后，由于在客户端和服务之间增加了中间层，因此服务器无法直接拿到客户端的IP(拿到的是中间层的ip)，服务器端应用也无法直接通过转发请求的地址返回给客户端。但是在转发请求的HTTP头信息中，增加了x-forwarded-for信息。用以跟踪原有的客户端IP地址和原来客户端请求的服务器地址。</p><p><strong>解决</strong>：在NGINX反向代理服务器上进行修改</p><p>在nginx配置文件中</p><p>每一个location上加上以下</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxy_set_header Host $http_host;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">proxy_set_header X-Forwarded-Proto $scheme;</span><br></pre></td></tr></table></figure><p>重启nginx即可</p><h2 id="springboot获取ip"><a href="#springboot获取ip" class="headerlink" title="springboot获取ip"></a><strong>springboot获取ip</strong></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取登录用户的IP地址</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getIp</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (request == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    String ip = request.getHeader(<span class="string">&quot;X-Requested-For&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getHeader(<span class="string">&quot;X-Forwarded-For&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getHeader(<span class="string">&quot;Proxy-Client-IP&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getHeader(<span class="string">&quot;WL-Proxy-Client-IP&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getHeader(<span class="string">&quot;HTTP_CLIENT_IP&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getHeader(<span class="string">&quot;HTTP_X_FORWARDED_FOR&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isEmpty(ip) || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">        ip = request.getRemoteAddr();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="string">&quot;0:0:0:0:0:0:0:1&quot;</span>.equals(ip))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ip;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isLocalHost</span><span class="params">(String ip)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;127.0.0.1&quot;</span>.equals(ip) || <span class="string">&quot;localhost&quot;</span>.equals(ip);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解析ip地址</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ipAddress</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getIpSource</span><span class="params">(String ipAddress)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        URL url = <span class="keyword">new</span> URL(<span class="string">&quot;http://opendata.baidu.com/api.php?query=&quot;</span> + ipAddress + <span class="string">&quot;&amp;co=&amp;resource_id=6006&amp;oe=utf8&quot;</span>);</span><br><span class="line">        BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(url.openConnection().getInputStream(), <span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">        String line = <span class="keyword">null</span>;</span><br><span class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">while</span> ((line = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result.append(line);</span><br><span class="line">        &#125;</span><br><span class="line">        reader.close();</span><br><span class="line">        Map map = JSON.parseObject(result.toString(), Map.class);</span><br><span class="line">        List&lt;Map&lt;String, String&gt;&gt; data = (List) map.get(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> data.get(<span class="number">0</span>).get(<span class="string">&quot;location&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+          <category> 后端 </category>
+          
+          <category> springboot </category>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+            <tag> springboot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>docker部署springboot项目</title>
       <link href="/2021/08/30/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/"/>
       <url>/2021/08/30/docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/</url>
@@ -38,6 +102,43 @@
     
     <entry>
       <title>Nginx+docker部署vue-cil项目</title>
+      <link href="/2021/08/27/Nginx+docker%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2021/08/27/Nginx+docker%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Nginx-docker部署vue-cil项目"><a href="#Nginx-docker部署vue-cil项目" class="headerlink" title="Nginx+docker部署vue-cil项目"></a>Nginx+docker部署vue-cil项目</h1><ol><li><p>编写dockerfile文件</p><p><strong>FROM-</strong>–指定哪个镜像作为新镜像的基础镜像</p><p><strong>MAINTAINER</strong>—-指明该镜像的作者信息</p><p><strong>COPY</strong>—将主机的文件复制到镜像内</p><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">MAINTAINER</span> chenqitian</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> dist/ /usr/share/nginx/html/</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> default.conf /etc/nginx/conf.d/default.conf</span></span><br></pre></td></tr></table></figure></li><li><p>打包vue-cil项目</p><p>cmd中输入以下命令，打包生成dist文件</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure></li><li><p>修改nginx配置文件<code>default.conf </code></p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8200;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /usr/share/nginx/html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">try_files $uri $uri/ @router;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">location @router &#123;</span><br><span class="line">            rewrite ^.*$ /index.html last;</span><br><span class="line">        &#125;</span><br><span class="line">location ^~ /api &#123;</span><br><span class="line">            proxy_pass   http://47.106.128.108:8100;</span><br><span class="line">            add_header Access-Control-Allow-Methods *;</span><br><span class="line">            add_header Access-Control-Max-Age 3600;</span><br><span class="line">            add_header Access-Control-Allow-Credentials true;</span><br><span class="line">            add_header Access-Control-Allow-Origin $http_origin;</span><br><span class="line">            add_header Access-Control-Allow-Headers $http_access_control_request_headers;</span><br><span class="line">            if ($request_method = OPTIONS ) &#123;</span><br><span class="line">                return 200;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>3.上传到服务器</p><p>​    使用xftp，把dockerfile文件和default.conf上传到服务器</p><p>4.打包成镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t [镜像名]</span><br></pre></td></tr></table></figure><p>5.docker images查看所安装的镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure><p>6.运行构建的镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8200:8200 [镜像名]</span><br></pre></td></tr></table></figure><p>7.完成</p><p>​    浏览器访问  xx.xx.xx.xx:8200即可</p><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">查看docker进程 -a（全部，包括不正常的）</span><br><span class="line">docker ps -a</span><br><span class="line">删除容器</span><br><span class="line">docker rm [容器id]</span><br><span class="line">删除镜像</span><br><span class="line">docker rmi [镜像id]</span><br><span class="line">查看镜像</span><br><span class="line">docker images</span><br><span class="line">进入容器</span><br><span class="line">docker <span class="built_in">exec</span> -it [容器id] /bin/bash</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+          <category> 前端 </category>
+          
+          <category> vue </category>
+          
+          <category> docker </category>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nginx+docker部署vue-cil项目</title>
       <link href="/2021/08/25/windows+Nginx%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/"/>
       <url>/2021/08/25/windows+Nginx%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/</url>
       
@@ -51,6 +152,8 @@
           <category> 前端 </category>
           
           <category> vue </category>
+          
+          <category> nginx </category>
           
       </categories>
       
@@ -175,41 +278,6 @@
     
     
     <entry>
-      <title>Nginx+docker部署vue-cil项目</title>
-      <link href="/2021/08/20/Nginx+docker%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/"/>
-      <url>/2021/08/20/Nginx+docker%E9%83%A8%E7%BD%B2vue-cil%E9%A1%B9%E7%9B%AE/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Nginx-docker部署vue-cil项目"><a href="#Nginx-docker部署vue-cil项目" class="headerlink" title="Nginx+docker部署vue-cil项目"></a>Nginx+docker部署vue-cil项目</h1><ol><li><p>编写dockerfile文件</p><p><strong>FROM-</strong>–指定哪个镜像作为新镜像的基础镜像</p><p><strong>MAINTAINER</strong>—-指明该镜像的作者信息</p><p><strong>COPY</strong>—将主机的文件复制到镜像内</p><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">MAINTAINER</span> chenqitian</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> dist/ /usr/share/nginx/html/</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> default.conf /etc/nginx/conf.d/default.conf</span></span><br></pre></td></tr></table></figure></li><li><p>打包vue-cil项目</p><p>cmd中输入以下命令，打包生成dist文件</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure></li><li><p>修改nginx配置文件<code>default.conf </code></p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8200;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /usr/share/nginx/html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">try_files $uri $uri/ @router;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">location @router &#123;</span><br><span class="line">            rewrite ^.*$ /index.html last;</span><br><span class="line">        &#125;</span><br><span class="line">location ^~ /api &#123;</span><br><span class="line">            proxy_pass   http://47.106.128.108:8100;</span><br><span class="line">            add_header Access-Control-Allow-Methods *;</span><br><span class="line">            add_header Access-Control-Max-Age 3600;</span><br><span class="line">            add_header Access-Control-Allow-Credentials true;</span><br><span class="line">            add_header Access-Control-Allow-Origin $http_origin;</span><br><span class="line">            add_header Access-Control-Allow-Headers $http_access_control_request_headers;</span><br><span class="line">            if ($request_method = OPTIONS ) &#123;</span><br><span class="line">                return 200;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>3.上传到服务器</p><p>​    使用xftp，把dockerfile文件和default.conf上传到服务器</p><p>4.打包成镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t [镜像名]</span><br></pre></td></tr></table></figure><p>5.docker images查看所安装的镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure><p>6.运行构建的镜像</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8200:8200 [镜像名]</span><br></pre></td></tr></table></figure><p>7.完成</p><p>​    浏览器访问  xx.xx.xx.xx:8200即可</p><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">查看docker进程 -a（全部，包括不正常的）</span><br><span class="line">docker ps -a</span><br><span class="line">删除容器</span><br><span class="line">docker rm [容器id]</span><br><span class="line">删除镜像</span><br><span class="line">docker rmi [镜像id]</span><br><span class="line">查看镜像</span><br><span class="line">docker images</span><br><span class="line">进入容器</span><br><span class="line">docker <span class="built_in">exec</span> -it [容器id] /bin/bash</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术笔记 </category>
-          
-          <category> 前端 </category>
-          
-          <category> vue </category>
-          
-          <category> docker </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> docker </tag>
-            
-            <tag> nginx </tag>
-            
-            <tag> vue </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>构建React-app应用时create-react-app卡住超慢的解决办法</title>
       <link href="/2021/08/16/%E6%9E%84%E5%BB%BAReact-app%E5%BA%94%E7%94%A8%E6%97%B6create-react-app%E5%8D%A1%E4%BD%8F%E8%B6%85%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
       <url>/2021/08/16/%E6%9E%84%E5%BB%BAReact-app%E5%BA%94%E7%94%A8%E6%97%B6create-react-app%E5%8D%A1%E4%BD%8F%E8%B6%85%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
@@ -221,9 +289,9 @@
           
           <category> 技术笔记 </category>
           
-          <category> react </category>
-          
           <category> 前端 </category>
+          
+          <category> react </category>
           
       </categories>
       
@@ -268,11 +336,11 @@
     
     
     <entry>
-      <title>git踩坑笔记 - 1</title>
+      <title>git踩坑 - 1</title>
       <link href="/2021/08/06/git%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/"/>
       <url>/2021/08/06/git%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="git踩坑笔记-1"><a href="#git踩坑笔记-1" class="headerlink" title="git踩坑笔记 - 1"></a>git踩坑笔记 - 1</h1><h4 id="git仓库大文件push失败报413-Request-Entity-Too-Large-问题解决办法"><a href="#git仓库大文件push失败报413-Request-Entity-Too-Large-问题解决办法" class="headerlink" title="git仓库大文件push失败报413 Request Entity Too Large 问题解决办法"></a>git仓库大文件push失败报413 Request Entity Too Large 问题解决办法</h4><p>使用https方式拉取的git仓库，在push文件时报错Gitlab error push files 413 Request Entity Too Large</p><p>尝试了如下</p><ol><li>增大https方式的post缓存   (不成功)</li></ol><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config http.postBuffer 524288000</span><br></pre></td></tr></table></figure><p>  2.修改本地仓库的https方式为ssh （成功）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote set-url origin ssh地址</span><br></pre></td></tr></table></figure><hr><h4 id="git-pull遇到错误：error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge"><a href="#git-pull遇到错误：error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge" class="headerlink" title="git pull遇到错误：error: Your local changes to the following files would be overwritten by merge"></a>git pull遇到错误：error: Your local changes to the following files would be overwritten by merge</h4><p><strong>原因：本地项目有修改，不能更新</strong></p><p><strong>方法1</strong>: 如果你想保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修改的代码将会被暂时封存起来）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash </span><br><span class="line"></span><br><span class="line">git pull origin master </span><br><span class="line"></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure><p>服务器上的代码更新到了本地，而且你本地修改的代码也没有被覆盖，之后使用add，commit，push 命令即可更新本地代码到服务器了。</p><p><strong>方法2</strong>: 如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pull</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset *--hard* </span><br><span class="line"></span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><p><strong>方法3</strong>:合并代码</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;xxx&quot;</span></span><br><span class="line">git pull</span><br><span class="line">git push</span><br></pre></td></tr></table></figure><hr><h4 id="命令Hexo-d上传GitHub超时报错"><a href="#命令Hexo-d上传GitHub超时报错" class="headerlink" title="命令Hexo d上传GitHub超时报错"></a>命令Hexo d上传GitHub超时报错</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">atal: unable to access <span class="string">&#x27;https://github.com/.......&#x27;</span>: OpenSSL SSL_read: Connection was reset, errno 10054</span><br></pre></td></tr></table></figure><p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以报错</p><p>参考网上解决办法：解除ssl验证后  (无效果)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/.../.git&#x27;</span>: Could not resolve host: github.com</span><br></pre></td></tr></table></figure><p>参考网上解决办法：解除代理  (无效果)</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy </span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/Chankeitin/Chankeitin.github.io.git/&#x27;</span>: Failed to connect to github.com port 443: Timed out</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/Chankeitin/Chankeitin.github.io.git/&#x27;</span>: Empty reply from server</span><br><span class="line">FATAL &#123;</span><br><span class="line">  ......</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span></span><br></pre></td></tr></table></figure><p>最后统一解决：</p><p><strong>重复运行命令，直到push成功</strong></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="git踩坑-1"><a href="#git踩坑-1" class="headerlink" title="git踩坑 - 1"></a>git踩坑 - 1</h1><h4 id="git仓库大文件push失败报413-Request-Entity-Too-Large-问题解决办法"><a href="#git仓库大文件push失败报413-Request-Entity-Too-Large-问题解决办法" class="headerlink" title="git仓库大文件push失败报413 Request Entity Too Large 问题解决办法"></a>git仓库大文件push失败报413 Request Entity Too Large 问题解决办法</h4><p>使用https方式拉取的git仓库，在push文件时报错Gitlab error push files 413 Request Entity Too Large</p><p>尝试了如下</p><ol><li>增大https方式的post缓存   (不成功)</li></ol><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config http.postBuffer 524288000</span><br></pre></td></tr></table></figure><p>  2.修改本地仓库的https方式为ssh （成功）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote set-url origin ssh地址</span><br></pre></td></tr></table></figure><hr><h4 id="git-pull遇到错误：error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge"><a href="#git-pull遇到错误：error-Your-local-changes-to-the-following-files-would-be-overwritten-by-merge" class="headerlink" title="git pull遇到错误：error: Your local changes to the following files would be overwritten by merge"></a>git pull遇到错误：error: Your local changes to the following files would be overwritten by merge</h4><p><strong>原因：本地项目有修改，不能更新</strong></p><p><strong>方法1</strong>: 如果你想保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修改的代码将会被暂时封存起来）</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash </span><br><span class="line"></span><br><span class="line">git pull origin master </span><br><span class="line"></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure><p>服务器上的代码更新到了本地，而且你本地修改的代码也没有被覆盖，之后使用add，commit，push 命令即可更新本地代码到服务器了。</p><p><strong>方法2</strong>: 如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pull</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset *--hard* </span><br><span class="line"></span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><p><strong>方法3</strong>:合并代码</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;xxx&quot;</span></span><br><span class="line">git pull</span><br><span class="line">git push</span><br></pre></td></tr></table></figure><hr><h4 id="命令Hexo-d上传GitHub超时报错"><a href="#命令Hexo-d上传GitHub超时报错" class="headerlink" title="命令Hexo d上传GitHub超时报错"></a>命令Hexo d上传GitHub超时报错</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">atal: unable to access <span class="string">&#x27;https://github.com/.......&#x27;</span>: OpenSSL SSL_read: Connection was reset, errno 10054</span><br></pre></td></tr></table></figure><p>产生原因：一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以报错</p><p>参考网上解决办法：解除ssl验证后  (无效果)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/.../.git&#x27;</span>: Could not resolve host: github.com</span><br></pre></td></tr></table></figure><p>参考网上解决办法：解除代理  (无效果)</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy </span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/Chankeitin/Chankeitin.github.io.git/&#x27;</span>: Failed to connect to github.com port 443: Timed out</span><br></pre></td></tr></table></figure><p>或出现错误</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/Chankeitin/Chankeitin.github.io.git/&#x27;</span>: Empty reply from server</span><br><span class="line">FATAL &#123;</span><br><span class="line">  ......</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span></span><br></pre></td></tr></table></figure><p>最后统一解决：</p><p><strong>重复运行命令，直到push成功</strong></p>]]></content>
       
       
       <categories>
