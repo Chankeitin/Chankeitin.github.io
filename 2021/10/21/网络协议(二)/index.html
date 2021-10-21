@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络协议(二) | Chankeitinの博客</title><meta name="keywords" content="网络协议"><meta name="author" content="Chankeitin"><meta name="copyright" content="Chankeitin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络协议(二)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络协议(二)">
+<meta property="og:url" content="http://example.com/2021/10/21/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%BA%8C)/index.html">
+<meta property="og:site_name" content="Chankeitinの博客">
+<meta property="og:description" content="网络协议(二)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg">
+<meta property="article:published_time" content="2021-10-21T08:47:55.000Z">
+<meta property="article:modified_time" content="2021-10-21T08:47:40.003Z">
+<meta property="article:author" content="Chankeitin">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg"><link rel="shortcut icon" href="/img/oil.svg"><link rel="canonical" href="http://example.com/2021/10/21/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%BA%8C)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络协议(二)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-21 16:47:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/gh/radium-bit/res@master/live2d/autoload.js" async></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/iconfont.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/bear.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Chankeitinの博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络协议(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-21T08:47:55.000Z" title="发表于 2021-10-21 16:47:55">2021-10-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-21T08:47:40.003Z" title="更新于 2021-10-21 16:47:40">2021-10-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7/">面试技巧</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络协议(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="网络协议-二"><a href="#网络协议-二" class="headerlink" title="网络协议(二)"></a>网络协议(二)</h1><h2 id="DNS-查询服务器的基本流程是什么？DNS-劫持是什么？"><a href="#DNS-查询服务器的基本流程是什么？DNS-劫持是什么？" class="headerlink" title="DNS 查询服务器的基本流程是什么？DNS 劫持是什么？"></a>DNS 查询服务器的基本流程是什么？DNS 劫持是什么？</h2><p>DNS（Domain Names System），域名系统，是互联网一项服务，是进行域名和与之相对应的 IP 地址进行转换的服务器</p>
+<p><img src="https://i.loli.net/2021/10/18/rfNsjWglJD7uFyI.png" alt="image-20211018173310316"></p>
+<p>DNS 查询的方式有两种：</p>
+<ul>
+<li>递归查询：如果 A 请求 B，那么 B 作为请求的接收者一定要给 A 想要的答案</li>
+</ul>
+<p><img src="https://i.loli.net/2021/10/18/CiKrWdfMXzqeNBk.png" alt="image-20211018173402644"></p>
+<ul>
+<li>迭代查询：如果接收者 B 没有请求者 A 所需要的准确内容，接收者 B 将告诉请求者 A，如何去获得这个内容，但是自己并不去发出请求</li>
+</ul>
+<p><img src="https://i.loli.net/2021/10/18/uB7Jc1H9Qy6rVE4.png" alt="image-20211018173424792"></p>
+<h3 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h3><p>解析域名的过程如下：</p>
+<ul>
+<li><p>首先搜索浏览器的 DNS 缓存，缓存中维护一张域名与 IP 地址的对应表</p>
+</li>
+<li><p>若没有命中，则继续搜索操作系统的 DNS 缓存</p>
+</li>
+<li><p>若仍然没有命中，则操作系统将域名发送至本地域名服务器，本地域名服务器采用递归查询自己的 DNS 缓存，查找成功则返回结果</p>
+</li>
+<li><p>若本地域名服务器的 DNS 缓存没有命中，则本地域名服务器向上级域名服务器进行迭代查询</p>
+</li>
+<li><p>首先本地域名服务器向根域名服务器发起请求，根域名服务器返回顶级域名服务器的地址给本地服务器</p>
+<ul>
+<li>本地域名服务器拿到这个顶级域名服务器的地址后，就向其发起请求，获取权限域名服务器的地址</li>
+<li>本地域名服务器根据权限域名服务器的地址向其发起请求，最终得到该域名对应的 IP 地址</li>
+<li>本地域名服务器将得到的 IP 地址返回给操作系统，同时自己将 IP 地址缓存起来</li>
+</ul>
+</li>
+<li><p>操作系统将 IP 地址返回给浏览器，同时自己也将 IP 地址缓存起</p>
+</li>
+<li><p>至此，浏览器就得到了域名对应的 IP 地址，并将 IP 地址缓存起</p>
+</li>
+</ul>
+<h3 id="什么是DNS劫持"><a href="#什么是DNS劫持" class="headerlink" title="什么是DNS劫持?"></a>什么是DNS劫持?</h3><p>DNS劫持又称域名劫持，是指在劫持的网络范围内拦截域名解析的请求，分析请求的域名，把审查范围以外的请求放行，否则返回假的IP地址或者什么都不做使请求失去响应，其效果就是对特定的网络不能反应或访问的是假网址。</p>
+<h3 id="预防DNS劫持"><a href="#预防DNS劫持" class="headerlink" title="预防DNS劫持?"></a>预防DNS劫持?</h3><p>修改默认的路由器登陆账号与密码</p>
+<h2 id="Cookie-和-Session-的关系和区别是什么？"><a href="#Cookie-和-Session-的关系和区别是什么？" class="headerlink" title="Cookie 和 Session 的关系和区别是什么？"></a>Cookie 和 Session 的关系和区别是什么？</h2><p>(1)cookie数据存放在客户的浏览器上，session数据放在服务器上<br>(2)cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗,如果主要考虑到安全应当使用session<br>(3)session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，如果主要考虑到减轻服务器性能方面，应当使用COOKIE<br>(4)单个cookie在客户端的限制是3K，就是说一个站点在客户端存放的COOKIE不能3K。<br>(5)所以：将登陆信息等重要信息存放为SESSION;其他信息如果需要保留，可以放在COOKIE中</p>
+<h2 id="简述-HTTPS-的加密与认证过程"><a href="#简述-HTTPS-的加密与认证过程" class="headerlink" title="简述 HTTPS 的加密与认证过程"></a>简述 HTTPS 的加密与认证过程</h2><h3 id="https加密过程"><a href="#https加密过程" class="headerlink" title="https加密过程"></a>https加密过程</h3><p><img src="https://i.loli.net/2021/10/18/4nuAhs5byHQapPL.png" alt="image-20211018185523161"></p>
+<h3 id="服务端证书通过CA机构签名认证的过程如下"><a href="#服务端证书通过CA机构签名认证的过程如下" class="headerlink" title="服务端证书通过CA机构签名认证的过程如下"></a>服务端证书通过CA机构签名认证的过程如下</h3><p><img src="https://i.loli.net/2021/10/18/gozbp1Knc7fUra5.png" alt="image-20211018185655146"></p>
+<h2 id="RestFul-是什么？RestFul-请求的-URL-有什么特点？"><a href="#RestFul-是什么？RestFul-请求的-URL-有什么特点？" class="headerlink" title="RestFul 是什么？RestFul 请求的 URL 有什么特点？"></a>RestFul 是什么？RestFul 请求的 URL 有什么特点？</h2><p>REST（Resource Representational State Transfer【表现层状态转化】）。如果一个架构符合REST原则，就称为RESTful架构，是一种<strong>面向资源的软件架构风格</strong></p>
+<p>REST最大的几个特点为：资源、统一接口、URI和无状态。</p>
+<p>资源：网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。资源总要通过某种载体反应其内容，文本可以用txt格式表现，也可以用HTML格式、XML格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现；JSON是现在最常用的资源表示格式。</p>
+<blockquote>
+<p>网络上的实体！</p>
+</blockquote>
+<p>统一接口：数据的元操作，即CRUD(create, read, update和delete,即数据的增删查改)操作，分别对应于HTTP方法：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源，这样就统一了数据操作的接口，仅通过HTTP方法，就可以完成对数据的所有增删查改工作。</p>
+<blockquote>
+<p>通过HTTP方法来确定并完成对实体的操作！</p>
+</blockquote>
+<p>URI：可以用一个URI（Universal Resource Identifier，统一资源定位符）指向资源，即每个URI都对应一个特定的资源。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或识别符。一般的，每个资源至少有一个URI与之对应，最典型的URI即URL。</p>
+<blockquote>
+<p>通过URI来识别不同的资源（实体）！</p>
+</blockquote>
+<p>无状态：所有的资源，都可以通过URI定位，而且这个定位与其他资源无关，也不会因为其他资源的变化而改变。<br>WebSocket是有状态的</p>
+<blockquote>
+<p>通过URI对资源（实体）操作时，无状态，没有上下文的影响！</p>
+</blockquote>
+<p>Resultful特点：<br>1.使用URL描述资源<br>2.使用HTTP方法描述行为。使用HTTP状态码来表示不同的结果<br>3.使用json交互数据，传统模式使用的是键值对形式<br>4.RESTful只是一种风格，并不是强制的标准。</p>
+<h2 id="RestFul-与-RPC-的区别是什么？RestFul-的优点在哪里？"><a href="#RestFul-与-RPC-的区别是什么？RestFul-的优点在哪里？" class="headerlink" title="RestFul 与 RPC 的区别是什么？RestFul 的优点在哪里？"></a>RestFul 与 RPC 的区别是什么？RestFul 的优点在哪里？</h2><h3 id="RESTFUL-与RPC的区别"><a href="#RESTFUL-与RPC的区别" class="headerlink" title="RESTFUL 与RPC的区别"></a>RESTFUL 与RPC的区别</h3><p>1.restfull和rpc都是client/server模式的，都是在 Server端 把一个个函数封装成接口暴露出去</p>
+<p>2.restful使用http协议实现，而rpc则不一定使用http，一般比较常用的是tcp， RPC 可以获得更好的性能（省去了 HTTP 报头等一系列东西）,TCP更加高效，而HTTP在实际应用中更加的灵活。</p>
+<p>3.从使用上来说：Http接口只关注服务提供方（服务端），对于客户端怎么调用，调用方式怎样并不关心；而RPC服务则需要客户端接口与服务端保持一致，服务端提供一个方法，客户端通过接口直接发起调用。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><h4 id="RPC的优势："><a href="#RPC的优势：" class="headerlink" title="RPC的优势："></a>RPC的优势：</h4><ol>
+<li>是查找的精确性，快速性，短路径，和确定性，因为属于内网查询，独立的注册中心，所以查找的速度更快。</li>
+<li>而且由于做了精简和优化，删去了RESTful方式里面很多多余的信息，比如Header，而且做了压缩和序列化，通过二进制方式传输，传输的内容更少，传输的速度也更快。</li>
+<li>环节和流程更少，因为RESTful需要经过路由，负载均衡，网关，防火墙和一系列的身份识别和校验，就像大楼内来了个不认识的人，楼管大叔肯定要查你的身份证等等信息核实你的信息。 而且RPC就省去了这些环节，就像你天天出来进去，楼管大妈早就对你很熟了，不需要每次核实你的信息，RPC省去了很多环节。</li>
+</ol>
+<h4 id="RESTful的优势："><a href="#RESTful的优势：" class="headerlink" title="RESTful的优势："></a>RESTful的优势：</h4><ol>
+<li>通用性更好，RESTful可以供任何接入互联网的终端调用，各种平台，各种终端都可以用RESTful传输和交换数据，而且有一套标准和规范的传输格式，所以格式更加标准化和通用化。</li>
+<li>安全性更高，因为属于连接外围和内网的通道，所以会经过一些列的安全和身份校验。</li>
+<li>移植性更好，从一个服务器迁移到另一个服务器，从一个节点迁移到另一个节点，从一个架构移植到另一种架构，都可以轻松完成。</li>
+</ol>
+<ul>
+<li><p>RPC的应用场景：当你的框架和语言种类也比较多，内部之间调用量非常大的时候，RPC是最佳的选择。RPC更多是内网之间的数据传输，一般是部署在服务层的分布式系统里面，或者微服务系统。有服务治理，服务限流、服务降级、服务熔断、服务监控等等，类似于大楼里面配了治安处，物业处、后勤处、监控中心等。</p>
+</li>
+<li><p>RESTful的应用场景：数据更多是公网上的传输，比如服务端API供 IOS、Android、PC等客户端调用， API供第三方合作方调用等 。</p>
+</li>
+</ul>
+<h2 id="TCP-挥手时出现大量-CLOSE-WAIT-或-TIME-WAIT-怎么解决？"><a href="#TCP-挥手时出现大量-CLOSE-WAIT-或-TIME-WAIT-怎么解决？" class="headerlink" title="TCP 挥手时出现大量 CLOSE_WAIT 或 TIME_WAIT 怎么解决？"></a>TCP 挥手时出现大量 CLOSE_WAIT 或 TIME_WAIT 怎么解决？</h2><h3 id="TIME-WAIT状态"><a href="#TIME-WAIT状态" class="headerlink" title="TIME_WAIT状态"></a>TIME_WAIT状态</h3><p>主动断开方处于TIME_WAIT状态时，源端口无法使用<br> 端口最大数是65535，因此如果频繁主动断开TCP连接，将很快耗尽端口号。一旦达到了上限，则新的请求就无法被处理，接着就是大量Too Many Open Files异常，然后tomcat、nginx、apache崩溃<br>如何解决TIME_WAIT问题</p>
+<h4 id="解决TIME-WAIT大量出现"><a href="#解决TIME-WAIT大量出现" class="headerlink" title="解决TIME_WAIT大量出现"></a>解决TIME_WAIT大量出现</h4><p>最核心的思想，就是打开系统的TIME_WAIT<strong>重用和快速回收</strong></p>
+<p>net.ipv4.tcp_tw_recycle = 1表示开启TCP连接中TIME_WAIT sockets的快速回收，默认为0,表示关闭<br>net.ipv4.tcp_tw_reuse = 1 表示开启重用。允许将TIME_WAIT sockets重新用于新的TCP连接，默认为0，表示关闭</p>
+<h3 id="CLOSE-WAIT状态"><a href="#CLOSE-WAIT状态" class="headerlink" title="CLOSE_WAIT状态"></a>CLOSE_WAIT状态</h3><p>如果出现了CLOSE_WAIT<strong>过多</strong>的状态</p>
+<p>1.在对方关闭连接后，自身程序里没有检测 -（被动方的角度）</p>
+<p>2.本身忘了需要关闭连接，于是整个资源就一直被程序占用着。-（主动方的角度）</p>
+<h4 id="如何解决CLOSE-WAIT问题"><a href="#如何解决CLOSE-WAIT问题" class="headerlink" title="如何解决CLOSE_WAIT问题"></a>如何解决CLOSE_WAIT问题</h4><p>关闭正在运行的程序<br>尽快修改程序bug,然后测试提交到线上服务器</p>
+<h2 id="什么是跨域，什么情况下会发生跨域请求？"><a href="#什么是跨域，什么情况下会发生跨域请求？" class="headerlink" title="什么是跨域，什么情况下会发生跨域请求？"></a>什么是跨域，什么情况下会发生跨域请求？</h2><p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器施加的安全限制。</p>
+<p>同源策略：所谓同源是指：协议，域名，端口均相同。即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.123.com/index.html%E8%B0%83%E7%94%A8">http://www.123.com/index.html调用</a> <a target="_blank" rel="noopener" href="http://www.123.com/server.php">http://www.123.com/server.php</a> （非跨域）<br><a target="_blank" rel="noopener" href="http://www.123.com/index.html">http://www.123.com/index.html</a> 调用 <a target="_blank" rel="noopener" href="http://www.456.com/server.php">http://www.456.com/server.php</a> （主域名不同:123/456，跨域）<br><a target="_blank" rel="noopener" href="http://abc.123.com/index.html">http://abc.123.com/index.html</a> 调用 <a target="_blank" rel="noopener" href="http://def.123.com/server.php">http://def.123.com/server.php</a> （子域名不同:abc/def，跨域）<br><a target="_blank" rel="noopener" href="http://www.123.com:8080/index.html">http://www.123.com:8080/index.html</a> 调用 <a target="_blank" rel="noopener" href="http://www.123.com:8081/server.php">http://www.123.com:8081/server.php</a> （端口不同:8080/8081，跨域）<br><a target="_blank" rel="noopener" href="http://www.123.com/index.html">http://www.123.com/index.html</a> 调用 <a target="_blank" rel="noopener" href="https://www.123.com/server.php">https://www.123.com/server.php</a> （协议不同:http/https，跨域）<br>请注意：localhost和127.0.0.1虽然都指向本机，但也属于跨域。</p>
+</blockquote>
+<h2 id="简述对称与非对称加密的概念"><a href="#简述对称与非对称加密的概念" class="headerlink" title="简述对称与非对称加密的概念"></a>简述对称与非对称加密的概念</h2><p><strong>对称加密</strong>是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key)</p>
+<blockquote>
+<p>常见的对称加密有DES、三 重DES、AES等</p>
+</blockquote>
+<p>非对称加密为数据的加密与解密提供了一个非常安全的方法，它使用了一对密钥，公钥（public key）和私钥（private key)</p>
+<ul>
+<li>只能私钥加密公钥解密,或者公钥加密私钥解密;</li>
+<li>一方保留密钥,一方公开密钥;不能同时公开,具体公开哪方需要根据实际情况来决定</li>
+</ul>
+<blockquote>
+<p>非对称加密算法常见有:RSA算法(3个人名简写)和diffie - hellman算法(迪菲·赫尔曼算法)</p>
+</blockquote>
+<h2 id="HTTP-中-GET-和-POST-区别"><a href="#HTTP-中-GET-和-POST-区别" class="headerlink" title="HTTP 中 GET 和 POST 区别"></a>HTTP 中 GET 和 POST 区别</h2><p>1、GET 方法：从指定的资源请求数据。</p>
+<p>请注意，查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：</p>
+<p>例如：<a target="_blank" rel="noopener" href="https://www.xxxx.com/xxx.asp">https://www.xxxx.com/xxx.asp</a>? name1=value1&amp;name2=value2  </p>
+<p>而需要注意的是：GET方法是可见的，而POST方法是在HTTP消息主体中发出的，具有不可见性。下面是一些GET的注释：</p>
+<ul>
+<li><p>请求可被缓存。</p>
+</li>
+<li><p>请求保留在浏览器历史记录中。</p>
+</li>
+<li><p>请求可被收藏为书签。</p>
+</li>
+<li><p>请求不应在处理敏感数据时使用</p>
+</li>
+<li><p>请求有长度限制</p>
+</li>
+<li><p>请求只应当用于取回数据</p>
+</li>
+<li><p>GET—&gt;application/x-www-form-urlencoded 。</p>
+</li>
+<li><p>GET—-&gt;只允许 ASCII 字符。</p>
+</li>
+</ul>
+<p>2、POST 方法：向指定的资源提交要被处理的数据</p>
+<p>  请注意，查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：</p>
+<p>GET方法是可见的，而POST方法是在HTTP消息主体中发出的，具有不可见性。下面是一些 POST的注释：</p>
+<ul>
+<li><p>请求不会被缓存</p>
+</li>
+<li><p>请求不会保留在浏览器历史记录中</p>
+</li>
+<li><p>不能被收藏为书签</p>
+</li>
+<li><p>请求对数据长度没有要求</p>
+</li>
+<li><p>POST—&gt;application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。 </p>
+</li>
+<li><p>POST—&gt; 没有限制。也允许二进制数据。</p>
+</li>
+</ul>
+<h2 id="TCP-的-keepalive-了解吗？说一说它和-HTTP-的-keepalive-的区别？"><a href="#TCP-的-keepalive-了解吗？说一说它和-HTTP-的-keepalive-的区别？" class="headerlink" title="TCP 的 keepalive 了解吗？说一说它和 HTTP 的 keepalive 的区别？"></a>TCP 的 keepalive 了解吗？说一说它和 HTTP 的 keepalive 的区别？</h2><h3 id="TCP-Keepalive"><a href="#TCP-Keepalive" class="headerlink" title="TCP Keepalive"></a>TCP Keepalive</h3><p>链接建立之后，如果应用程序或者上层协议一直不发送数据，或者隔很长时间才发送一次数据，当链接很久没有数据报文传输时如何去确定对方还在线，到底是掉线了还是确实没有数据传输，链接还需不需要保持，这种情况在TCP协议设计中是需要考虑到的。</p>
+<p>TCP协议通过一种巧妙的方式去解决这个问题，当超过一段时间之后，TCP自动发送一个数据为空的报文给对方，如果对方回应了这个报文，说明对方还在线，链接可以继续保持，如果对方没有报文返回，并且重试了多次之后则认为链接丢失，没有必要保持链接。</p>
+<h3 id="TCP-Keepalive-HTTP-Keep-Alive-的关系"><a href="#TCP-Keepalive-HTTP-Keep-Alive-的关系" class="headerlink" title="TCP Keepalive HTTP Keep-Alive 的关系"></a>TCP Keepalive HTTP Keep-Alive 的关系</h3><p><strong>HTTP协议的Keep-Alive意图在于TCP连接复用，同一个连接上串行方式传递请求-响应数据；TCP的Keepalive机制意图在于探测连接的对端是否存活。</strong></p>
+<p><img src="https://i.loli.net/2021/10/21/c8iT39hYKEu5JI4.png" alt="image-20211021104327114"></p>
+<h2 id="简述常见的-HTTP-状态码的含义（301，304，401，403）"><a href="#简述常见的-HTTP-状态码的含义（301，304，401，403）" class="headerlink" title="简述常见的 HTTP 状态码的含义（301，304，401，403）"></a>简述常见的 HTTP 状态码的含义（301，304，401，403）</h2><p>200 OK ：服务器成功返回用户请求的数据。</p>
+<p>201 CREATED ：用户新建或修改数据成功。</p>
+<p>202 Accepted： 请求已被接受，但尚未处理。</p>
+<p>301 Moved Permanently： 永久重定向。</p>
+<p>304 Not Modified： 请求资源与本地缓存相同，未修改。</p>
+<p>307/302 Temporary Redirect：临时重定向。不会从POST变成GET。</p>
+<p>400 INVALID REQUEST ：用户发出的请求有错误。</p>
+<p>401 Unauthorized ：用户没有权限。</p>
+<p>403 Forbidden ：访问被禁止。</p>
+<p>404 NOT FOUND ：请求针对的是不存在的记录。</p>
+<p>406 Not Acceptable ：用户请求的的格式不正确。</p>
+<p>500 INTERNAL SERVER ERROR ：服务器发生错误。</p>
+<p>503 Service Unavailable：服务器暂时处于超负荷或正在进行停机维护，现在无法处理请求。</p>
+<h2 id="简述-TCP-的-TIME-WAIT-和-CLOSE-WAIT"><a href="#简述-TCP-的-TIME-WAIT-和-CLOSE-WAIT" class="headerlink" title="简述 TCP 的 TIME_WAIT 和 CLOSE_WAIT"></a>简述 TCP 的 TIME_WAIT 和 CLOSE_WAIT</h2><p><strong>TIME_WAIT-主动关闭</strong></p>
+<ul>
+<li>TIME_WAIT 是主动关闭链接时形成的，等待2MSL时间，约4分钟。主要是防止最后一个ACK丢失。  由于TIME_WAIT 的时间会非常长，因此server端应尽量减少主动关闭连接</li>
+</ul>
+<p><strong>CLOSE_WAIT-被动关闭</strong></p>
+<ul>
+<li>CLOSE_WAIT是被动关闭连接是形成的。根据TCP状态机，服务器端收到客户端发送的FIN，则按照TCP实现发送ACK，因此进入CLOSE_WAIT状态。但如果服务器端不执行close()，就不能由CLOSE_WAIT迁移到LAST_ACK，则系统中会存在很多CLOSE_WAIT状态的连接。此时，可能是系统忙于处理读、写操作，而未将已收到FIN的连接，进行close。此时，recv/read已收到FIN的连接socket，会返回0。</li>
+</ul>
+<h2 id="简述-TCP-滑动窗口以及重传机制"><a href="#简述-TCP-滑动窗口以及重传机制" class="headerlink" title="简述 TCP 滑动窗口以及重传机制"></a>简述 TCP 滑动窗口以及重传机制</h2><h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>窗口的实现实际上是操作系统开辟的一个缓存空间，发送方主机在等到确认应答返回之前，必须在缓冲区中保留已发送的数据。如果按期收到确认应答，此时数据就可以从缓存区清除。</p>
+<p>通常窗口的大小是由接收方的决定的。</p>
+<p>发送方发送的数据大小不能超过接收方的窗口大小，否则接收方就无法正常接收到数据。不是完全相等，接收窗口的大小是<strong>约等于</strong>发送窗口的大小的</p>
+<h3 id="重传机制"><a href="#重传机制" class="headerlink" title="重传机制"></a>重传机制</h3><p><img src="https://i.loli.net/2021/10/21/L9vi6aKeN1mHX8k.png" alt="image-20211021164258042"></p>
+<p>当某一段报文丢失了，图中（1001 - 2000）数据段丢失了，接受方没有接收到该数据段，则会一直的给发送方发送ACK（下一个是1001），如果发送端主机连续收到同样一个（下一个1001），就会将对应的数据（1001 - 2000）重新发送。<br>这时候如果接收端收到1001之后，再次返回的就是ACK（8001）了。之前的（2001 - 8000）都接收到了接受缓存区。<br>这种机制被称为“高速重发机制”（快速重传）</p>
+<h2 id="简述-DDOS-攻击原理，如何防范它？"><a href="#简述-DDOS-攻击原理，如何防范它？" class="headerlink" title="简述 DDOS 攻击原理，如何防范它？"></a>简述 DDOS 攻击原理，如何防范它？</h2><p>整个过程可分为：</p>
+<ol>
+<li>扫描大量主机以寻找可入侵主机目标；</li>
+<li>有安全漏洞的主机并获取控制权；</li>
+<li>入侵主机中安装攻击程序；</li>
+<li>用己入侵主机继续进行扫描和入侵。</li>
+</ol>
+<h4 id="DDoS攻击防御方法"><a href="#DDoS攻击防御方法" class="headerlink" title="DDoS攻击防御方法"></a><strong>DDoS攻击防御方法</strong></h4><p><strong>1. 过滤不必要的服务和端口：</strong>可以使用Inexpress、Express、Forwarding等工具来过滤不必要的服务和端口，即在路由器上过滤假IP。比如Cisco公司的CEF(Cisco Express Forwarding)可以针对封包Source IP和Routing Table做比较，并加以过滤。只开放服务端口成为目前很多服务器的流行做法，例如WWW服务器那么只开放80而将其他所有端口关闭或在防火墙上做阻止策略。</p>
+<p><strong>2. 异常流量的清洗过滤：</strong>通过DDOS硬件防火墙对异常流量的清洗过滤，通过数据包的规则过滤、数据流指纹检测过滤、及数据包内容定制过滤等顶尖技术能准确判断外来访问流量是否正常，进一步将异常流量禁止过滤。单台负载每秒可防御800-927万个syn攻击包。</p>
+<p><strong>3. 分布式集群防御：</strong>这是目前网络安全界防御大规模DDOS攻击的最有效办法。分布式集群防御的特点是在每个节点服务器配置多个IP地址（负载均衡），并且每个节点能承受不低于10G的DDOS攻击，如一个节点受攻击无法提供服务，系统将会根据优先级设置自动切换另一个节点，并将攻击者的数据包全部返回发送点，使攻击源成为瘫痪状态，从更为深度的安全防护角度去影响企业的安全执行决策。</p>
+<p><strong>4. 高防智能DNS解析：</strong>高智能DNS解析系统与DDOS防御系统的完美结合，为企业提供对抗新兴安全威胁的超级检测功能。它颠覆了传统一个域名对应一个镜像的做法，智能根据用户的上网路线将DNS解析请求解析到用户所属网络的服务器。同时智能DNS解析系统还有宕机检测功能，随时可将瘫痪的服务器IP智能更换成正常服务器IP，为企业的网络保持一个永不宕机的服务状态。</p>
+<p><strong>5.带宽资源要充足：</strong>带宽直接决定了抗DDOS攻击的能力，至少要选择100M带宽的，越多越好。</p>
+<p><strong>6.服务器的硬件配置：</strong>在带宽以及流量有充分保障的前提下，服务器的硬件配置必须得跟上。当然，主要的因素还是CPU和内存</p>
+<p><strong>7.搭建CDN：</strong>将内容缓存在终端用户附近</p>
+<h2 id="简述-OSI-七层模型，TCP，IP-属于哪一层？"><a href="#简述-OSI-七层模型，TCP，IP-属于哪一层？" class="headerlink" title="简述 OSI 七层模型，TCP，IP 属于哪一层？"></a>简述 OSI 七层模型，TCP，IP 属于哪一层？</h2><p><strong>TCP，IP 属于传输层</strong></p>
+<table>
+<thead>
+<tr>
+<th>OSI七层模型</th>
+<th>TCP/IP模型</th>
+<th>功能</th>
+<th>TCP/IP协议族</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>应用层</td>
+<td>直接向用户提供服务，完成用户希望完成的各种网络操作</td>
+<td>HTTP，FTP，TFTP，DNS，Telnet，SMTP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>进行数据编解码，数据加解密和格式转换</td>
+<td>没有协议</td>
+<td></td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>解除或建立与别的节点的联系，组织和协调两个会话进程之间的通信，并对数据交换进行管理</td>
+<td>没有协议</td>
+<td></td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>传输层</td>
+<td>向两台主机中进程之间的通信提供通用的数据传输服务，实现端到端连接</td>
+<td>TCP，UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>网络层</td>
+<td>为分组交换网上的不同主机提供通信服务，也就是进行IP选址和路由选择</td>
+<td>IP，ICMP，RIP，IGMP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据链路层</td>
+<td>在物理层提供的比特流基础上，通过差错控制、流量控制的方法，将由差错的物理线路变为无差错的、能可靠传输数据帧的数据链路</td>
+<td>SLIP，CSLIP，PPP，ARP，RARP，</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>物理层</td>
+<td>利用传输介质为数据链路层提供物理连接，实现相邻计算机节点之间比特流的透明传输</td>
+<td>IEEE802.1 A，IEEE802.2到IEEE802.11</td>
+</tr>
+</tbody></table>
+<p>题目答案均为转载，题目先后顺序按各大厂总出题次数排列！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/Chankeitin">Chankeitin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://chankeitin.github.io/">https://chankeitin.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权归Chankeitin所有，如有转载，请註明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://i.loli.net/2021/08/05/5KJ7ROPmZpTvHjX.png" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/08/05/5KJ7ROPmZpTvHjX.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://i.loli.net/2021/08/05/bpnZGzPqxdRo5tI.png" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/08/05/bpnZGzPqxdRo5tI.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/10/18/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%B8%80)/"><img class="next-cover" src="https://i.loli.net/2021/10/18/QBtrHZ5jkvwShdl.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">网络协议(一)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/10/01/Java-steam流/" title="Java Steam流"><img class="cover" src="https://i.loli.net/2021/10/01/Rq7TkA5KHb4G1Wj.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-01</div><div class="title">Java Steam流</div></div></a></div><div><a href="/2021/09/24/java.lang.UnsupportedOperationException/" title="此集合非彼集合-Arrays.asList()"><img class="cover" src="https://i.loli.net/2021/10/02/lxsEeQqMfFC1WKT.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-24</div><div class="title">此集合非彼集合-Arrays.asList()</div></div></a></div><div><a href="/2021/10/18/网络协议(一)/" title="网络协议(一)"><img class="cover" src="https://i.loli.net/2021/10/18/QBtrHZ5jkvwShdl.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-18</div><div class="title">网络协议(一)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/bear.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chankeitin</div><div class="author-info__description">这不是一个 bug,这只是一个未列出来的特性</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chankeitin"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Chankeitin" target="_blank" title="Github"><i class="iconfont icon-git"></i></a><a class="social-icon" href="https://gitee.com/chanchitin" target="_blank" title="Gitee"><i class="iconfont icon-gitee"></i></a><a class="social-icon" href="https://chankeitin.github.io/" target="_blank" title="blog"><i class="iconfont icon-home"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到chankeitinの博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%BA%8C"><span class="toc-number">1.</span> <span class="toc-text">网络协议(二)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E6%9F%A5%E8%AF%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FDNS-%E5%8A%AB%E6%8C%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">DNS 查询服务器的基本流程是什么？DNS 劫持是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">查询过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDNS%E5%8A%AB%E6%8C%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">什么是DNS劫持?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E9%98%B2DNS%E5%8A%AB%E6%8C%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">预防DNS劫持?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie-%E5%92%8C-Session-%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">Cookie 和 Session 的关系和区别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-HTTPS-%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">简述 HTTPS 的加密与认证过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#https%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">https加密过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%81%E4%B9%A6%E9%80%9A%E8%BF%87CA%E6%9C%BA%E6%9E%84%E7%AD%BE%E5%90%8D%E8%AE%A4%E8%AF%81%E7%9A%84%E8%BF%87%E7%A8%8B%E5%A6%82%E4%B8%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">服务端证书通过CA机构签名认证的过程如下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RestFul-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FRestFul-%E8%AF%B7%E6%B1%82%E7%9A%84-URL-%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">RestFul 是什么？RestFul 请求的 URL 有什么特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RestFul-%E4%B8%8E-RPC-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FRestFul-%E7%9A%84%E4%BC%98%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">RestFul 与 RPC 的区别是什么？RestFul 的优点在哪里？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTFUL-%E4%B8%8ERPC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.1.</span> <span class="toc-text">RESTFUL 与RPC的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.5.2.</span> <span class="toc-text">优点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPC%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">RPC的优势：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RESTful%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">RESTful的优势：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E6%8C%A5%E6%89%8B%E6%97%B6%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-CLOSE-WAIT-%E6%88%96-TIME-WAIT-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">TCP 挥手时出现大量 CLOSE_WAIT 或 TIME_WAIT 怎么解决？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TIME-WAIT%E7%8A%B6%E6%80%81"><span class="toc-number">1.6.1.</span> <span class="toc-text">TIME_WAIT状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3TIME-WAIT%E5%A4%A7%E9%87%8F%E5%87%BA%E7%8E%B0"><span class="toc-number">1.6.1.1.</span> <span class="toc-text">解决TIME_WAIT大量出现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CLOSE-WAIT%E7%8A%B6%E6%80%81"><span class="toc-number">1.6.2.</span> <span class="toc-text">CLOSE_WAIT状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3CLOSE-WAIT%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">如何解决CLOSE_WAIT问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%EF%BC%8C%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%8F%91%E7%94%9F%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">什么是跨域，什么情况下会发生跨域请求？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%AF%B9%E7%A7%B0%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.8.</span> <span class="toc-text">简述对称与非对称加密的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E4%B8%AD-GET-%E5%92%8C-POST-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text">HTTP 中 GET 和 POST 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E7%9A%84-keepalive-%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F%E8%AF%B4%E4%B8%80%E8%AF%B4%E5%AE%83%E5%92%8C-HTTP-%E7%9A%84-keepalive-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">TCP 的 keepalive 了解吗？说一说它和 HTTP 的 keepalive 的区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-Keepalive"><span class="toc-number">1.10.1.</span> <span class="toc-text">TCP Keepalive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-Keepalive-HTTP-Keep-Alive-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.10.2.</span> <span class="toc-text">TCP Keepalive HTTP Keep-Alive 的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%B8%B8%E8%A7%81%E7%9A%84-HTTP-%E7%8A%B6%E6%80%81%E7%A0%81%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%88301%EF%BC%8C304%EF%BC%8C401%EF%BC%8C403%EF%BC%89"><span class="toc-number">1.11.</span> <span class="toc-text">简述常见的 HTTP 状态码的含义（301，304，401，403）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-TCP-%E7%9A%84-TIME-WAIT-%E5%92%8C-CLOSE-WAIT"><span class="toc-number">1.12.</span> <span class="toc-text">简述 TCP 的 TIME_WAIT 和 CLOSE_WAIT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-TCP-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E4%BB%A5%E5%8F%8A%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.13.</span> <span class="toc-text">简述 TCP 滑动窗口以及重传机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.13.1.</span> <span class="toc-text">滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E4%BC%A0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.13.2.</span> <span class="toc-text">重传机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-DDOS-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86%EF%BC%8C%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E5%AE%83%EF%BC%9F"><span class="toc-number">1.14.</span> <span class="toc-text">简述 DDOS 攻击原理，如何防范它？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DDoS%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">1.14.0.1.</span> <span class="toc-text">DDoS攻击防御方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-OSI-%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%EF%BC%8CTCP%EF%BC%8CIP-%E5%B1%9E%E4%BA%8E%E5%93%AA%E4%B8%80%E5%B1%82%EF%BC%9F"><span class="toc-number">1.15.</span> <span class="toc-text">简述 OSI 七层模型，TCP，IP 属于哪一层？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/21/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%BA%8C)/" title="网络协议(二)"><img src="https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络协议(二)"/></a><div class="content"><a class="title" href="/2021/10/21/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%BA%8C)/" title="网络协议(二)">网络协议(二)</a><time datetime="2021-10-21T08:47:55.000Z" title="发表于 2021-10-21 16:47:55">2021-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/18/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%B8%80)/" title="网络协议(一)"><img src="https://i.loli.net/2021/10/18/QBtrHZ5jkvwShdl.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络协议(一)"/></a><div class="content"><a class="title" href="/2021/10/18/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE(%E4%B8%80)/" title="网络协议(一)">网络协议(一)</a><time datetime="2021-10-18T09:14:24.000Z" title="发表于 2021-10-18 17:14:24">2021-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/01/Java-steam%E6%B5%81/" title="Java Steam流"><img src="https://i.loli.net/2021/10/01/Rq7TkA5KHb4G1Wj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java Steam流"/></a><div class="content"><a class="title" href="/2021/10/01/Java-steam%E6%B5%81/" title="Java Steam流">Java Steam流</a><time datetime="2021-10-01T06:12:24.000Z" title="发表于 2021-10-01 14:12:24">2021-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/24/java.lang.UnsupportedOperationException/" title="此集合非彼集合-Arrays.asList()"><img src="https://i.loli.net/2021/10/02/lxsEeQqMfFC1WKT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="此集合非彼集合-Arrays.asList()"/></a><div class="content"><a class="title" href="/2021/09/24/java.lang.UnsupportedOperationException/" title="此集合非彼集合-Arrays.asList()">此集合非彼集合-Arrays.asList()</a><time datetime="2021-09-23T17:28:24.000Z" title="发表于 2021-09-24 01:28:24">2021-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/05/vue%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E4%B8%8E%20%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE/" title="vue跨域代理配置 与 浏览器跨域配置"><img src="https://i.loli.net/2021/08/31/z4GIWx6EaYdHtXP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue跨域代理配置 与 浏览器跨域配置"/></a><div class="content"><a class="title" href="/2021/09/05/vue%E8%B7%A8%E5%9F%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E4%B8%8E%20%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE/" title="vue跨域代理配置 与 浏览器跨域配置">vue跨域代理配置 与 浏览器跨域配置</a><time datetime="2021-09-05T03:15:40.000Z" title="发表于 2021-09-05 11:15:40">2021-09-05</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2021/10/18/FWXgD4oHSfUjhTw.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 By Chankeitin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
