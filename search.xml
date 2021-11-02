@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Java-整型数值对比</title>
+      <link href="/2021/10/30/Java-%E6%95%B4%E5%9E%8B%E6%95%B0%E5%80%BC%E5%AF%B9%E6%AF%94/"/>
+      <url>/2021/10/30/Java-%E6%95%B4%E5%9E%8B%E6%95%B0%E5%80%BC%E5%AF%B9%E6%AF%94/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Java-整型数值对比"><a href="#Java-整型数值对比" class="headerlink" title="Java-整型数值对比"></a>Java-整型数值对比</h1><p>有如下4条语句：()</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i01=<span class="number">59</span>;</span><br><span class="line"><span class="keyword">int</span> i02=<span class="number">59</span>;</span><br><span class="line">Integer i03=Integer.valueOf(<span class="number">59</span>);</span><br><span class="line">Integer i04=<span class="keyword">new</span> Integer(<span class="number">59</span>);</span><br></pre></td></tr></table></figure><p>以下输出结果为false的是:</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A. System.out.println(i01==i02);</span><br><span class="line">B. System.out.println(i01==i03);</span><br><span class="line">C. System.out.println(i03==i04);</span><br><span class="line">D. System.out.println(i02==i04);</span><br></pre></td></tr></table></figure><h2 id="答案：C"><a href="#答案：C" class="headerlink" title="答案：C"></a>答案：C</h2><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ol><li>无论如何，Integer与new Integer不会相等。不会经历拆箱过程，</li><li>两个都是非new出来的Integer，如果数在-128到127之间，则是true,否则为false<br>java在编译Integer i2 = 128的时候,被翻译成-&gt; Integer i2 = Integer.valueOf(128);而valueOf()函数会对-128到127之间的数进行缓存</li><li>两个都是new出来的,都为false</li><li>int和integer(无论new否)比，都为true，因为会把Integer自动拆箱为int再去比</li></ol><ul><li><strong>Integer valueOf(int i)：</strong>返回一个表示指定的 int 值的 Integer 实例。</li></ul><p>Byte,Short,Integer,Long,Character这5种整型的包装类也只是在对应值小于等于127并且大于等于-128时才可使用常量池，因为他们至占用一个字节(-128~127);</p><p>再者Integer.valueOf方法中也有判断，如果传递的整型变量&gt;= -128并且小于127时会返回IntegerCache类中一个静态数组中的某一个对象， 否则会返回一个新的Integer对象,代码如下</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">一些基本数据类型缓冲池的范围</span><br><span class="line"><span class="keyword">boolean</span> values <span class="keyword">true</span> and <span class="keyword">false</span></span><br><span class="line"><span class="keyword">short</span> values between -<span class="number">128</span> and <span class="number">127</span></span><br><span class="line"><span class="keyword">int</span> values between -<span class="number">128</span> and <span class="number">127</span></span><br><span class="line"><span class="keyword">char</span> in the range \u0000 to \u007F</span><br><span class="line">进入对应类源码查看对应XXXCache类的cache范围即可</span><br></pre></td></tr></table></figure><p>所以如果你测试如下代码</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">        Integer a = <span class="number">127</span>;</span><br><span class="line">        Integer b = <span class="number">127</span>;</span><br><span class="line">         </span><br><span class="line">        Integer c = <span class="number">128</span>;</span><br><span class="line">        Integer d = <span class="number">128</span>;</span><br><span class="line">         </span><br><span class="line">        System.out.println(a == b);</span><br><span class="line">        System.out.println(c == d);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>结合自动封装、常量池以及Integer.valueOf方法就不难得出，答案时true和false；</p><p>再看本题</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i01=<span class="number">59</span>;</span><br><span class="line"><span class="keyword">int</span> i02=<span class="number">59</span>;</span><br><span class="line">Integer i03=Integer.valueOf(<span class="number">59</span>);</span><br><span class="line">Integer i04=<span class="keyword">new</span> Integer(<span class="number">59</span>);</span><br></pre></td></tr></table></figure><p>第一行：由于59在-128~127范围之内，所以在自动装箱的时候，会返回IntegerCache[59 - (-128)];</p><p>第三行：同第一行</p><p>第四行：因为有new关键字，所以在heap中开辟了一块新内存放置值为59的Integer对象。</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(i01==i02);<span class="comment">//正确</span></span><br><span class="line">System.out.println(i01==i03);<span class="comment">//正确，都指向IntegerCache[59-(-128)]对象</span></span><br><span class="line">System.out.println(i03==i04);<span class="comment">//错误，引用指向的对象地址不同</span></span><br><span class="line">System.out.println(i02==i04);<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术笔记 </category>
+          
+          <category> 后端 </category>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java·JVM·JUC(一)</title>
       <link href="/2021/10/30/Java%C2%B7JVM%C2%B7JUC(%E4%B8%80)/"/>
       <url>/2021/10/30/Java%C2%B7JVM%C2%B7JUC(%E4%B8%80)/</url>
